@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% extends "hf_template.html" %}
+{%load static%}
+{% block content %}
+
+<body style="background-image: url('{%static "/img/panarama.png" %}')">
+    <div class = "block">
+        <div class="card m-2 me-2 opacity-75">
+          <div class="card-header">
+              НАШИ ЦЕННОСТИ
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">ПОДДЕРЖКА</h5>
+            <p class="card-text">Осуществлять поддержку всем участникам проекта и помогать в решении вопросов.</p>
+
+            <h5 class="card-title">ПРОДВИЖЕНИЕ</h5>
+            <p class="card-text">Помогать продвигать услуги и товары наших участников.</p>
+
+            <h5 class="card-title">РЕКЛАМА</h5>
+            <p class="card-text">Помощь в создании своего сайта и организации рекламных акций.</p>
+
+            <h5 class="card-title">ИНОВАЦИИ</h5>
+            <p class="card-text">Подключение современных решений. Подключение телеграмботов, создание интернет-магазина
+            и продвижение сайтов.</p>
+
+            <a href="#" class="btn btn-primary opacity-90">Стать участником проекта</a>
+          </div>
+          <div class="card-footer text-muted">
+          </div>
+    </div>
+    </div>
+</body>
+{% endblock %}
+
+</html>
