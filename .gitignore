@@ -1,1 +1,7 @@
 /.env
+/db.sqlite3
+__init__.py
+resume_page.html
+**/static
+**/migrations
+settings.py
