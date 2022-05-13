@@ -10,16 +10,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Samara-Business</title>
-      <div class="row bg-success text-white align-items-center">
-          <div class="col-sm-1">
-              <a href="/"><img src= {% static "/img/gerb.jpg" %} width=100% height=100% /></a>
-          </div>
-          <div class="col-sm-1 text-start">
+      <div class="d-flex justify-content-around bg-success text-white align-items-center">
+          <div class="col-sm-1 d-flex justify-content-center">
+            <div class="col-sm align-item-center">
+              <a href="/"><img src= {% static "/img/gerb.jpg" %} width=80% height=80% /></a>
+            </div>
+            <div class="col-sm text-start align-item-center">
             <!-- Main Menu area -->
               <!-- Right or left aligned dropdown menu can be use at different breakpoints with the help of .dropdown-menu-*-{end|start} class -->
             <div class="btn-group">
               <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <h5> Menu </h5>
+                  <h6> Menu </h6>
               </button>
               <ul class="dropdown-menu dropdown-menu-sm-end dropdown-menu-xl-start">
                 <li><a class="dropdown-item" href="/aboutus">About us</a></li>
@@ -28,12 +29,13 @@
               </ul>
             </div>
         </div>
+          </div>
         <div class="col-sm-5 text-center">
           <h1 h="/">Samara-Business</h1>
         </div>
-        <div class="col-sm-4 text-end">
+        <div class="col-sm-4 text-end ms-2 ms-2">
             <a href="/error" class="text-white me-2"> login </a>
-            <a href="/error" class="text-white ms-2 me-2"> registration </a>
+            <a href="/error" class="text-white">  sign_in</a>
         </div>
       </div>
 </head>
