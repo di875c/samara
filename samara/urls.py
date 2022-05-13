@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from samara.settings import WEBHOOK
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('webhook', include('tgbot')),
+    path(f'{WEBHOOK}/', include('tgbot')),
     path('', include('start_site.urls')),
 ]
