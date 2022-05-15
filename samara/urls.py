@@ -19,6 +19,6 @@ from samara.settings import WEBHOOK
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(f'{WEBHOOK}/', include('tgbot')),
+    path(f'{WEBHOOK}/', include('tgbot.urls')),
     path('', include('start_site.urls')),
 ]
