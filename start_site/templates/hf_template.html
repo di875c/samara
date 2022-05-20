@@ -34,8 +34,13 @@
           <h1 h="/">Samara-Business</h1>
         </div>
         <div class="col-sm-4 text-end ms-2 ms-2">
-            <a href="/error" class="text-white me-2"> login </a>
-            <a href="/error" class="text-white">  sign_in</a>
+            {% if user.is_authenticated %}
+                <a href="/accounts/update" class="text-white me-2"> {{ user.username }} </a>
+                <a href="{% url 'logout' %}" class="text-white">  logout</a>
+            {% else %}
+                <a href="/accounts/login" class="text-white me-2"> login </a>
+                <a href="/accounts/signup" class="text-white">  sign_up</a>
+            {% endif %}
         </div>
       </div>
 </head>

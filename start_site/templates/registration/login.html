@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "hf_template.html" %}
+{%load static%}
+{% block content %}
+<body>
+<div class="ms-4 mt-4">
+<h2>Войти на сайт</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Log In</button>
+</form>
+</div>
+</body>
+{% endblock %}
+</html>
