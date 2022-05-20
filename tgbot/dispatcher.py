@@ -19,6 +19,7 @@ from samara.settings import TELEGRAM_TOKEN, DEBUG
 from tgbot.handlers.utils import files, error
 from tgbot.handlers.admin import handlers as admin_handlers
 from tgbot.handlers.currency import handlers as currency_handlers
+from tgbot.handlers.project_account import handlers as proj_acc_handlers
 from tgbot.handlers.onboarding import handlers as onboarding_handlers
 from tgbot.handlers.broadcast_message import handlers as broadcast_handlers
 from tgbot.handlers.onboarding.manage_data import SECRET_LEVEL_BUTTON
@@ -41,6 +42,9 @@ def setup_dispatcher(dp):
 
     # currency
     dp.add_handler(currency_handlers.currency_conversation)
+
+    # project account
+    dp.add_handler(proj_acc_handlers.project_acc_conversation)
 
 
     # secret level
@@ -132,19 +136,21 @@ def set_up_commands(bot_instance: Bot) -> None:
         'en': {
             'start': 'Start django bot 🚀',
             'currency': 'Request currency rate',
+            'proj_acc': 'Учет тех проекта',
+            'cancel': 'cancel conversation',
             'stats': 'Statistics of bot 📊',
             'admin': 'Show admin info ℹ️',
-            'ask_location': 'Send location 📍',
             'broadcast': 'Broadcast message 📨',
             'export_users': 'Export users.csv 👥',
         },
         'ru': {
             'start': 'Запустить django бота 🚀',
             'currency': 'Запрос курса конвертации $',
+            'proj_acc': 'Учет тех проекта',
+            'cancel': 'прервать текущий диалог',
             'stats': 'Статистика бота 📊',
             'admin': 'Показать информацию для админов ℹ️',
             'broadcast': 'Отправить сообщение 📨',
-            'ask_location': 'Отправить локацию 📍',
             'export_users': 'Экспорт users.csv 👥',
         }
     }

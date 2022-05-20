@@ -100,3 +100,4 @@ class Location(CreateTracker):
 class Currency(CreateTracker):
     date_request = models.CharField(max_length=48)
     xml = models.CharField(max_length=6000)
+    objects = GetOrNoneManager()
