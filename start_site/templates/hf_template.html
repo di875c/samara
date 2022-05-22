@@ -13,7 +13,7 @@
       <div class="d-flex justify-content-around bg-success text-white align-items-center">
           <div class="col-sm-1 d-flex justify-content-center">
             <div class="col-sm align-item-center">
-              <a href="/"><img src= {% static "/img/gerb.jpg" %} width=80% height=80% /></a>
+              <a href="/"><img src= {% static "/img/gerb.jpg" %} width=80px height=80px /></a>
             </div>
             <div class="col-sm text-start align-item-center">
             <!-- Main Menu area -->
@@ -24,6 +24,7 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-sm-end dropdown-menu-xl-start">
                 <li><a class="dropdown-item" href="/aboutus">About us</a></li>
+                <li><a class="dropdown-item" href="/account">Account</a></li>
                 <li><a class="dropdown-item" href="#">Partners</a></li>
                 <li><a class="dropdown-item" href="#">Contact</a></li>
               </ul>
@@ -44,9 +45,11 @@
         </div>
       </div>
 </head>
+<div style="margin-bottom:125px">
 {% block content %}
 {% endblock %}
-<div class="row fixed-bottom row-fluid">
+</div>
+<div class="footer fixed-bottom">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3  border-top bg-white">
     <div class="col-md-4 d-flex align-items-center">
       <span class="text-muted ms-3">&copy; 2022 Союз Предпринимателей Самары</span>

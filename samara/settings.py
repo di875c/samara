@@ -30,7 +30,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #added app
     'start_site',
     'tgbot.apps.TgbotConfig',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -87,22 +88,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'samara.passenger_wsgi.application'
+# WSGI_APPLICATION = 'samara.passenger_wsgi.application'
+WSGI_APPLICATION = 'samara.wsgi.application'
 ASGI_APPLICATION = 'samara.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': dj_database_url.config(conn_max_age=600, default="sqlite:///db.sqlite3"),
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(conn_max_age=600, default="sqlite:///db.sqlite3"),
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': os.environ.get('DB_NAME'),
+    #     'USER': os.environ.get('DB_USER'),
+    #     'PASSWORD': os.environ.get('DB_PASSWORD'),
+    #     'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    # }project_information
 }
 
 
@@ -145,6 +147,11 @@ USE_TZ = True
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+#User autentification
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

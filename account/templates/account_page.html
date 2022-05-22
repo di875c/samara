@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% extends "hf_template.html" %}
+{%load static%}
+{% block content %}
+
+<body>
+    <div class = "block">
+        <h2>Найти проект</h2>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Find</button>
+            </form>
+    </div>
+    <div class = "block">
+                    <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Проект</th>
+                              <th scope="col">Электронный чек</th>
+                              <th scope="col">Сумма по чеку</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for data in query %}
+                            <tr>
+                              <th scope="row">{{data.id}}</th>
+                              <td>{{data.project_name}}</td>
+                              <td><a href=" {{data.bill_link}}"> ссылка на чек </a></td>
+                              <td>{{data.sum_value}}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                              <th scope="row"></th>
+                              <td> Итого </td>
+                              <td></td>
+                              <td>{{total.sum_value__sum}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+    </div>
+
+</body>
+
+{% endblock %}
+</html>
