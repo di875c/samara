@@ -31,7 +31,6 @@ def proj_name_check(update: Update, context: CallbackContext):
     u = User.get_user(update, context)
     account_object.user = u
     account_object.project_name = update.message.text
-    debug_flag=True
     if AccountModel.objects.filter(user=u, project_name=account_object.project_name).exists():
         text = f'Проект {account_object.project_name} найден. Дополнить его?'
     else:
@@ -65,6 +64,12 @@ def proj_acc_add_summ(update: Update, context: CallbackContext) -> None:
     account_object.user = User.get_user(update, context)
     account_object.sum_value = float(update.message.text)
     account_object.save()
+    AccountModel.objects.create(
+        user= User.get_user(update, context),
+        bill_link=account_object.bill_link,
+        # bill_photo=account_object.bill_photo,
+        sum_value=account_object.sum_value,
+    )
     return stand_message(update, context, output=ConversationHandler.END, text='Данные сохранены в базе. До встречи.')
 
 
