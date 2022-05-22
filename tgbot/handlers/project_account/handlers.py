@@ -64,7 +64,8 @@ def proj_acc_add_summ(update: Update, context: CallbackContext) -> None:
     account_object.user = User.get_user(update, context)
     account_object.sum_value = float(update.message.text)
     AccountModel.objects.create(
-        user= User.get_user(update, context),
+        user=User.get_user(update, context),
+        project_name=account_object.project_name,
         bill_link=account_object.bill_link,
         # bill_photo=account_object.bill_photo,
         sum_value=account_object.sum_value,
