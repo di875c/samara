@@ -23,9 +23,9 @@ class Converter:
         return val_cur/num_cur
 
     def calculate(self, amount, cur_from, cur_to, date):
-        if cur_from == 'RUR': val_from = Decimal(1)
+        if cur_from.upper() == 'RUR': val_from = Decimal(1)
         else: val_from = self.currency_extract(cur_from, date)
-        if cur_to == 'RUR': val_to = Decimal(1)
+        if cur_to.upper() == 'RUR': val_to = Decimal(1)
         else: val_to = self.currency_extract(cur_to, date)
         return Decimal(Decimal(amount) * val_from / val_to).quantize(
             Decimal("1.0000"))

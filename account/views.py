@@ -31,4 +31,6 @@ def account_view(request):
     return render(request, template_name, {'form': form, 'query': account_query, 'total': total_value})
 
 def tlgrm_id_nfound(request):
-    return render(request, 'not_found.html')
+    picture = AccountModel.objects.latest('created_at')
+    print(picture)
+    return render(request, 'not_found.html', {'picture': picture})

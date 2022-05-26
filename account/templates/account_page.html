@@ -19,7 +19,9 @@
                             <tr>
                               <th scope="col">#</th>
                               <th scope="col">Проект</th>
+                              <th scope="col">Дата</th>
                               <th scope="col">Электронный чек</th>
+                                <th scope="col">Фото чека</th>
                               <th scope="col">Сумма по чеку</th>
                             </tr>
                           </thead>
@@ -28,13 +30,25 @@
                             <tr>
                               <th scope="row">{{data.id}}</th>
                               <td>{{data.project_name}}</td>
-                              <td><a href=" {{data.bill_link}}"> ссылка на чек </a></td>
+                              <td>{{data.created_at}}</td>
+                              {% if data.bill_link == Null %}
+                                    <td> - </td>
+                              {% else %}
+                                    <td><a href=" {{data.bill_link}}"> ссылка на чек </a></td>
+                              {% endif %}
+                              {% if data.bill_photo != '' %}
+                               <td><a href=" {{data.bill_photo.url}}"> ссылка на фото </a></td>
+                                {% else %}
+                                <td> - </td>
+                                {% endif %}
                               <td>{{data.sum_value}}</td>
                             </tr>
                             {% endfor %}
                             <tr>
                               <th scope="row"></th>
                               <td> Итого </td>
+                              <td></td>
+                              <td></td>
                               <td></td>
                               <td>{{total.sum_value__sum}}</td>
                             </tr>

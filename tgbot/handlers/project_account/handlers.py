@@ -6,11 +6,14 @@ from telegram.ext import (CallbackContext, CallbackQueryHandler,
 from tgbot.handlers.project_account.keyboards import send_proj_mode_keyboard, yes_no_mode_keyboard
 from tgbot.models import User
 from account.models import AccountModel
-# from tgbot.handlers.currency import utils
+from samara import settings
+from telegram import Bot
+import os
+
 
 CHECK_PRA_NAME, START_PRA, SELECTION_PRA_MODE, LINK_RECIEVED, PHOTO_RECIEVED, SUMM_RECIEVED = range(6)
 account_object = AccountModel()
-
+bot = Bot(settings.TELEGRAM_TOKEN)
 
 def stand_message(update, context, output, text='', keyboard=None):
     u = User.get_user(update, context)
@@ -57,6 +60,11 @@ def proj_input_photo(update: Update, context: CallbackContext) -> None:
 
 
 def proj_acc_add_photo(update: Update, context: CallbackContext) -> None:
+    photo = update.message.photo[-1].file_id
+    file = bot.get_file(update.message.photo[-1].file_id)
+    folder_path = os.path.join(settings.MEDIA_ROOT, account_object.project_name)
+    file.download(f'{folder_path}/{photo}.jpg')
+    account_object.bill_photo = f'{account_object.project_name}/{photo}.jpg'
     return stand_message(update, context, output=SUMM_RECIEVED, text='добавьте сумму по чеку')
 
 
@@ -67,9 +75,11 @@ def proj_acc_add_summ(update: Update, context: CallbackContext) -> None:
         user=User.get_user(update, context),
         project_name=account_object.project_name,
         bill_link=account_object.bill_link,
-        # bill_photo=account_object.bill_photo,
+        bill_photo=account_object.bill_photo,
         sum_value=account_object.sum_value,
     )
+    account_object.bill_link=None
+    account_object.bill_photo=None
     return stand_message(update, context, output=ConversationHandler.END, text='Данные сохранены в базе. До встречи.')
 
 
